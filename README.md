@@ -1,3 +1,23 @@
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+<h1 aligh="center"> Financas FrontEnd com React e BackEnd ApringBootAPI e Persistencia dos dados com e PostgreeSQL<h2>
+<strong>Repositorio do frontEnd REACT</strong> </br>
+<strong>node v16.14.2 </strong> </br>
+<strong>Yarn 1.22.19 /npm  8.5.0</strong> </br>
+<strong>Junit 5</strong></br></br>
+
+Para baixar o projeto BACKEND SpringBootAPI:
+
+```
+https://github.com/Rodrigodante11/Ponto_Venda_Java_Web_Spring.git
+```
+
+Para baixar o projeto FRONTEND React.js:
+
+```
+https://github.com/Rodrigodante11/financas_React_frontEnd.git
+```
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
