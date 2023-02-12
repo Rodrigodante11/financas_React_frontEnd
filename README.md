@@ -5,6 +5,13 @@
 <strong>Yarn 1.22.19 /npm  8.5.0</strong> </br>
 <strong>react-router-dom 5.1.2</strong></br></br>
 
+<strong> bootswatch 5.2.3</strong> </br>
+<strong> React 16.10.1</strong> </br>
+<strong> React dom 16.10.1</strong> </br>
+<strong> React router-dom 5.1.2</strong> </br>
+<strong> React Scripts 3.1.2</strong> </br>
+
+
 Para baixar o projeto BACKEND SpringBootAPI:
 
 ```
