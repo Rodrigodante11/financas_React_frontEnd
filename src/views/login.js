@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../components/card"
 import FormGroup from "../components/form-group";
+import { withRouter } from "react-router-dom"; 
 // import imgSpringReact from "../img/Spring-Boot-React.png"
 
 class Login extends React.Component{
@@ -11,6 +12,11 @@ class Login extends React.Component{
     entrar = () => {
         console.log('Email: ', this.state.email)
         console.log('Senha: ', this.state.senha)
+    }
+
+    prepareCadastrar = () => {
+       
+        this.props.history.push('/cadastro-usuarios')
     }
 
     render(){
@@ -48,7 +54,7 @@ class Login extends React.Component{
                                         </FormGroup>
                                         <div className="card-body d-flex justify-content-center">
                                             <button onClick={ this.entrar } className="btn btn-success btn-lg me-2">   Entrar</button>
-                                            <button type="button" className="btn btn-danger btn-lg">Cadastrar</button>
+                                            <button type="button" onClick={ this.prepareCadastrar } className="btn btn-danger btn-lg">Cadastrar</button>
                                         </div>
                                         
                                     </fieldset>
@@ -67,4 +73,4 @@ class Login extends React.Component{
     
 }
 
-export default Login;
+export default withRouter(Login);
