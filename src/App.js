@@ -1,6 +1,7 @@
 import 'bootswatch/dist/flatly/bootstrap.css';
 import React from 'react';
-import Login from './views/login';  // componente vai virando Tag no React
+// import Login from './views/login';  // componente vai virando Tag no React
+import CadastroUsuario from './views/cadastroUsuario';
 import './views/custom.css'
 
 // function App() { 
@@ -17,7 +18,7 @@ class App extends React.Component {
   render(){
     return ( 
       <div>
-          <Login /> 
+          <CadastroUsuario /> 
       </div>
     )
   }

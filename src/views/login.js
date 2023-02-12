@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../components/card"
 import FormGroup from "../components/form-group";
-import imgSpringReact from "../img/Spring-Boot-React.png"
+// import imgSpringReact from "../img/Spring-Boot-React.png"
 
 class Login extends React.Component{
     state = {
@@ -18,7 +18,7 @@ class Login extends React.Component{
                 <div className="row">
                     <div className="col-md-6" style={{ position: 'relative', left: '300px'}}  >
 
-                         <Card title='Login'>  {/*tudo que esta dentro dessa Tag ira para {this.props.children} la em (Card) */}
+                         <Card title='Finanças Login'>  {/*tudo que esta dentro dessa Tag ira para {this.props.children} la em (Card) */}
                          
                             <div className="row">
                                 <div className="col-lg-12">
@@ -48,7 +48,7 @@ class Login extends React.Component{
                                         <div className="card-body d-flex justify-content-center">
                                             <button onClick={ this.entrar } className="btn btn-success btn-lg me-2">   Entrar</button>
                                             <button type="button" className="btn btn-danger btn-lg">Cadastrar</button>
-                                            </div>
+                                        </div>
                                         
                                     </fieldset>
 
@@ -57,7 +57,7 @@ class Login extends React.Component{
                             </div>
 
                         </Card>
-                        <img src={imgSpringReact} style={{ width: '100%', height:'100' }} />
+                        {/* <img src={imgSpringReact} style={{ width: '100%', height:'100' }} /> */}
                     </div>
                 </div>
             </div>
