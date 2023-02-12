@@ -3,7 +3,7 @@
 <strong>Repositorio do frontEnd REACT</strong> </br>
 <strong>node v16.14.2 </strong> </br>
 <strong>Yarn 1.22.19 /npm  8.5.0</strong> </br>
-<strong>Junit 5</strong></br></br>
+<strong>react-router-dom 5.1.2</strong></br></br>
 
 Para baixar o projeto BACKEND SpringBootAPI:
 
@@ -19,9 +19,22 @@ https://github.com/Rodrigodante11/financas_React_frontEnd.git
 
 </br>
 
+Para instalar as dependencias do package.json:
+ ```
+yarn install
+```
+
+Para iniciar o porjeto na porta 3000:
+ ```
+yarn start
+```
+
+
 Usando o  [bootswatch](https://bootswatch.com/cerulean/) do bootstrap
 ### `yarn add bootswatch`
 ### `npm install bootswatch`
+
+### `yarn add react-router-dom@5.1.2`
 
 </br>
 
