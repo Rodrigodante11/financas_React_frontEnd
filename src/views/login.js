@@ -9,18 +9,19 @@ import axios from "axios";
 class Login extends React.Component{
     state = {
         email: '',
-        senha: ''
+        senha: '',
+        mensagemErro: null
     }
     entrar = () => {
 
         axios.post('http://localhost:8080/api/usuario/autenticar', {
-            email:this.state.email,
+            email: this.state.email,
             senha: this.state.senha
 
         }).then(response => {
-            console.log(response)
+            this.props.history.push('/home')
         }).catch( erro =>{
-            console.log("Error: "+ erro.response)
+            this.setState({mensagemErro: erro.response.data})
         })
 
         
@@ -38,7 +39,9 @@ class Login extends React.Component{
                     <div className="col-md-6" style={{ position: 'relative', left: '300px'}}  >
 
                          <Card title='Finanças Login'>  {/*tudo que esta dentro dessa Tag ira para {this.props.children} la em (Card) */}
-                         
+                            <div className="row">
+                                <span>{this.state.mensagemErro}</span>
+                            </div>
                             <div className="row">
                                 <div className="col-lg-12">
                                     <div className="bs-component">
