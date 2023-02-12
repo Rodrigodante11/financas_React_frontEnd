@@ -14,7 +14,8 @@ class Login extends React.Component{
     }
 
     render(){
-        return (<div className="container">
+        return (
+
                 <div className="row">
                     <div className="col-md-6" style={{ position: 'relative', left: '300px'}}  >
 
@@ -60,7 +61,7 @@ class Login extends React.Component{
                         {/* <img src={imgSpringReact} style={{ width: '100%', height:'100' }} /> */}
                     </div>
                 </div>
-            </div>
+            
         )
     }
     
