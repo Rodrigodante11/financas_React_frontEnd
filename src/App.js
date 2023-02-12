@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootswatch/dist/flatly/bootstrap.css';
 import React from 'react';
-
+import Login from './views/login';  // componente vai virando Tag no React
+import './views/custom.css'
 
 // function App() { 
 //   return ( 
@@ -13,43 +13,12 @@ import React from 'react';
 
 class App extends React.Component {
 
-  somar = ()=>{
-    const resultado = parseFloat(this.state.numero2) + parseFloat(this.state.numero1)
-    this.setState({resultado: resultado})
-  }
-
-  state = {
-    numero1: '',
-    numero2: '',
-    resultado: ''
-  }
-
+  
   render(){
     return ( 
-         <div>
-          <label> Digte o primeiro numero 1: </label>
-
-          <input type="text" value={this.state.numero1} 
-              onChange={ (e) => 
-              this.setState({numero1: e.target.value}) } />
-
-          O nomero 1 digitado foi: {this.state.numero1}
-
-          <br></br>
-
-          <label> Digte o primeiro numero 2: </label>
-          <input type="text" value={this.state.numero2} 
-              onChange={ (e) => 
-              this.setState({numero2: e.target.value}) } />
-
-          O nomero 2 digitado foi: {this.state.numero2}        
-         
-          <br></br>
-
-          <button onClick={this.somar}> Resultado</button>
-          <br></br>
-          Resultado: {this.state.resultado}       
-        </div>
+      <div>
+          <Login /> 
+      </div>
     )
   }
 }
