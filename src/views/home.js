@@ -1,11 +1,22 @@
 import React from "react";
-
+import axios from "axios";
 
 class Home extends React.Component{
 
     state = {
         saldo: 0
     
+    }
+
+    componentDidMount(){ //é invocado imediatamente após a montagem de um componente (inserido na árvore)
+
+        axios.get('http://localhost:8080/api/usuario/2/saldo')
+            .then( response =>{
+                this.setState({saldo: response.data})
+                console.log(this.state.saldo)
+            }).catch( error =>{
+                console.log(error.response)
+            });
     }
 
     render(){

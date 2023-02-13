@@ -12,18 +12,24 @@ class Login extends React.Component{
         senha: '',
         mensagemErro: null
     }
-    entrar = () => {
+    entrar = async() => {
 
-        axios.post('http://localhost:8080/api/usuario/autenticar', {
+        await axios.post('http://localhost:8080/api/usuario/autenticar', { 
             email: this.state.email,
             senha: this.state.senha
 
         }).then(response => {
             this.props.history.push('/home')
-        }).catch( erro =>{
+        }).catch( erro =>{  
             this.setState({mensagemErro: erro.response.data})
         })
+        
+        // o que esta aqui executa antes do que esta no axios se nao tiver o async() await
+        // no caso com async() await eu digo pra ele executa e esperar a resposta antes de fazer outra coisa
+        // no caso as coisas que estao abaixo do axist.post()
 
+        // usuariotest@email.com
+        // senhatest
         
     }
 
