@@ -9,8 +9,13 @@ class Home extends React.Component{
     }
 
     componentDidMount(){ //é invocado imediatamente após a montagem de um componente (inserido na árvore)
+        
+        const usuarioLogadoString = localStorage.getItem('_usuario_logado') // pegando o uaurio logado que foi setado la em 
+        //(Login.js > entrar() (localStorage.setItem('_usuario_logado', JSON.stringify(response.data)))
 
-        axios.get('http://localhost:8080/api/usuario/2/saldo')
+        const usuarioLogadoObjeto= JSON.parse(usuarioLogadoString) // transformando uma string em objeto Json
+
+        axios.get(`http://localhost:8080/api/usuario/${usuarioLogadoObjeto.id}/saldo`)
             .then( response =>{
                 this.setState({saldo: response.data})
                 console.log(this.state.saldo)
