@@ -2,23 +2,31 @@ import React from "react";
 import Card from "../components/card"
 import FormGroup from "../components/form-group";
 import { withRouter } from "react-router-dom"; 
-import axios from "axios";
+import UsuarioService from "../app/service/usuarioService";
+
 // import imgSpringReact from "../img/Spring-Boot-React.png"
 
 
 class Login extends React.Component{
+
+    constructor(){
+        super();
+        this.service = new UsuarioService();
+    }
+
     state = {
         email: '',
         senha: '',
         mensagemErro: null
     }
     entrar = async() => {
-
-        await axios.post('http://localhost:8080/api/usuario/autenticar', { 
-            email: this.state.email,
-            senha: this.state.senha
-
-        }).then(response => {
+        
+        this.service.autenticar(
+            {
+                email: this.state.email,
+                senha: this.state.senha
+            }
+        ).then(response => {
             
             //JSON.stringify() // TRanforma um objeto em String
             localStorage.setItem('_usuario_logado', JSON.stringify(response.data)) // pegando o usuario loga
