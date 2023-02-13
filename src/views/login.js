@@ -3,6 +3,8 @@ import Card from "../components/card"
 import FormGroup from "../components/form-group";
 import { withRouter } from "react-router-dom"; 
 import UsuarioService from "../app/service/usuarioService";
+import LocalHistorageService from "../app/service/localstorageService";
+
 
 // import imgSpringReact from "../img/Spring-Boot-React.png"
 
@@ -27,15 +29,8 @@ class Login extends React.Component{
                 senha: this.state.senha
             }
         ).then(response => {
-            
-            //JSON.stringify() // TRanforma um objeto em String
-            localStorage.setItem('_usuario_logado', JSON.stringify(response.data)) // pegando o usuario loga
-            // O LocalStorage é uma forma de salvar dados no computador do cliente. 
-            // Ele permite que salvemos pares de chaves e valores no web browser sem uma data de expiração.
-            // Essa forma de armazenamento só pode ser acessada via JavaScript e HTML5, 
-            // mas é importante saber que o usuário pode limpar os dados/cache do browser se quiser.
-            // Apos logar pode ser visto em inspecionar> Aplicativo> Armazenamento> ArmazenamentoLocal
-
+            LocalHistorageService.addItem('_usuario_logado', response.data)
+           
             this.props.history.push('/home')
 
         }).catch( erro =>{  
