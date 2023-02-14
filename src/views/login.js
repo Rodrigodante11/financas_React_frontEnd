@@ -4,7 +4,7 @@ import FormGroup from "../components/form-group";
 import { withRouter } from "react-router-dom"; 
 import UsuarioService from "../app/service/usuarioService";
 import LocalHistorageService from "../app/service/localstorageService";
-
+import { mensagemErro} from '../components/toastr'
 
 // import imgSpringReact from "../img/Spring-Boot-React.png"
 
@@ -34,7 +34,8 @@ class Login extends React.Component{
             this.props.history.push('/home')
 
         }).catch( erro =>{  
-            this.setState({mensagemErro: erro.response.data})
+            mensagemErro(erro.response.data)
+           
         })
         
         // o que esta aqui executa antes do que esta no axios se nao tiver o async() await
