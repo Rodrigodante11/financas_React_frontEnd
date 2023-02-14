@@ -19,12 +19,53 @@ class CadastroUsuario extends React.Component{
         this.usuarioService = new UsuarioService();
     }
 
+    validar(){
+        const msgs = []
+
+        if(!this.state.nome){
+
+            msgs.push('O campo Nome é Obrigatorio')
+
+        }
+        if(!this.state.email){
+            msgs.push('O campo Email é Obrigatorio')
+        }
+        else if( !this.state.email.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]/)){
+            msgs.push(' Informe um email Valido')
+        }
+
+        if(!this.state.senha){
+            msgs.push(' Informe a senha')
+        }
+        if(!this.state.senhaRepeticao)
+        {
+            msgs.push('O campo confirmacao de senha é Obrigatorio')
+        }
+        if(this.state.senha !== this.state.senhaRepeticao){
+            msgs.push('As senha nao combinam!')
+        }
+
+
+        return msgs;
+    }
+
     cancelar = () => {
        
         this.props.history.push('/login')
     }
 
     cadastrar = () => {
+        const msgs =  this.validar();
+
+        if(msgs && msgs.length >0){
+            
+            msgs.forEach( (msg, index) => {
+                mensagemErro(msg)
+            });
+            return false;
+        }
+
+
         const usuario = {
             email: this.state.email,
             nome:  this.state.nome,
@@ -39,7 +80,7 @@ class CadastroUsuario extends React.Component{
             }).catch(error => {
 
                 mensagemErro(error.response.data)
-                
+
             })
     }
 
