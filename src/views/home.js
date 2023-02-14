@@ -17,13 +17,12 @@ class Home extends React.Component{
     componentDidMount(){ //é invocado imediatamente após a montagem de um componente (inserido na árvore)
         
         const usuarioLogado = LocalHistorageService.obterItem('_usuario_logado')
-        console.log(usuarioLogado.id)
 
         this.usuarioService
             .obterSaldoPorUsuario(usuarioLogado.id)
             .then( response =>{
                 this.setState({saldo: response.data})
-                console.log(this.state.saldo)
+              
             }).catch( error =>{
                 console.log(error.response)
             });
