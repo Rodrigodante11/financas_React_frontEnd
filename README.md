@@ -32,10 +32,15 @@ yarn install
 ```
 
 Para iniciar o porjeto na porta 3000:
- ```
+
+```
 yarn start
 ```
 
+Para usar icones, buttons Dialog box e etc 
+```
+yarn add primereact primeicons
+```
 
 Usando o  [bootswatch](https://bootswatch.com/cerulean/) do bootstrap
 ### `yarn add bootswatch`
