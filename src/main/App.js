@@ -9,6 +9,15 @@ import Rotas from './rotas';
 import NavBar from '../components/navBar';
 import 'toastr/build/toastr.css'
 
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";     
+    
+//core
+import "primereact/resources/primereact.min.css";
+
+//icons
+import "primeicons/primeicons.css";  
+
 class App extends React.Component {
 
   

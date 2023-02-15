@@ -8,6 +8,10 @@ import LancamentoTable from "./lancamentoTable";
 import LancamentoService from "../../app/service/lancamentoService";
 import LocalHistorageService from "../../app/service/localstorageService";
 
+
+import { Button } from 'primereact/button';
+import { Dialog } from 'primereact/dialog';
+
 import * as messages from '../../components/toastr'
 
 class ConsultaLancamentos extends React.Component{
@@ -24,6 +28,8 @@ class ConsultaLancamentos extends React.Component{
         mes: '',
         tipo: '',
         descricao:'',
+        showConfirmDialog: false,
+        lancamentoDeletar:{},
         lancamentos: []
     }
 
@@ -54,11 +60,54 @@ class ConsultaLancamentos extends React.Component{
 
     }
 
+    editar = (id) =>{
+        console.log("Editar: " +id)
+    }
+
+    abrirConfirmacaoDeletar = (lancamento) =>{
+        this.setState({ showConfirmDialog: true , lancamentoDeletar: lancamento})
+        
+    }
+    cancelarDelecao =() =>{
+        this.setState({ showConfirmDialog: false , lancamentoDeletar: {} })
+    }
+    deletar = () =>{
+
+        this.lancamentoService
+            .deletar(this.state.lancamentoDeletar.id)
+            .then(response => {
+                
+                // comandos abaixo foi so para atualizar a pagina pois o item ja foi deletado 
+                // entrando nesse metodo
+                const lancamentosConst = this.state.lancamentos // pegando todos lancamentos 
+                const indexParaDeletar = lancamentosConst.indexOf(this.lancamentoDeletar) // descobrindo o index do excluido
+
+                lancamentosConst.splice(indexParaDeletar, 1) // deletando o excluido
+                this.setState({lancamentos: lancamentosConst}) // setando a nova lista
+                
+
+                messages.mensagemSucesso('Lancamento deletado com Sucesso')
+                this.setState({ showConfirmDialog: false , lancamentoDeletar: {}})
+                
+            }).catch(error =>{
+                messages.mensagemErro(' Erro ao tentar deletar o Lancamento, Relate ao desenvolvedor')
+            })
+        
+    }
+    
     render(){
 
         const meses =this.lancamentoService.obterListaMeses();
 
         const tipos = this.lancamentoService.obterTipos();
+
+        const confirmDialogFooter = (
+            <div>
+                <Button label="Confirmar" icon="pi pi-check" onClick={this.deletar} className="p-button-text" />
+                
+                <Button label="Cancelar" icon="pi pi-times"  onClick={this.cancelarDelecao} autoFocus />
+            </div>
+        );
 
         return(
             <Card title="Consulta Lancamentos">
@@ -115,13 +164,31 @@ class ConsultaLancamentos extends React.Component{
                             <div className="col-md-12">
                                 <div className="bs-component">
 
-                                    <LancamentoTable lancamentos={this.state.lancamentos}></LancamentoTable>
+                                    <LancamentoTable lancamentos={this.state.lancamentos} 
+                                        deleteAction={this.abrirConfirmacaoDeletar}
+                                        editAction={this.editar} />                
+                                    
+                                    <div className="flex flex-wrap justify-content-center gap-2 mb-2">
+    
+                                    </div>
+                                </div>                                                          
+                            </div>
 
-                                </div>
+                            <div>
+                            <Dialog header="Excluir Lancamento" 
+                                visible={this.state.showConfirmDialog} 
+                                style={{ width: '50vw' }} 
+                                onHide={() => this.setState({showConfirmDialog: false})} 
+                                modal={true}  //congelar a tela quando o dialog estever aparecendo
+                                footer={confirmDialogFooter}>
+                                <p className="m-0">
+                                    Gostaria de Deletar o Lancamento?
+                                </p>
+                            </Dialog>
                             </div>
                         </div>
                     </div>
-                
+
                 </div>
             </Card>
         )
