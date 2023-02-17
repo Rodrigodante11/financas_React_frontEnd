@@ -1,4 +1,5 @@
 import ApiService from "../apiService";
+import ErroValidacao from "./exception/erroValidacao";
 
 export default class LancamentoService extends ApiService{
     
@@ -32,7 +33,31 @@ export default class LancamentoService extends ApiService{
             {    label: 'Despesa' ,      value: 'DESPESA'  },
             {    label: 'Receita' ,   value: 'RECEITA' },           
         ]
-    } 
+    }
+    
+    validar(lancamento){
+        const erros = [];
+        if(!lancamento.ano){
+            erros.push("Informe o ano")
+        }
+        if(!lancamento.mes){
+            erros.push("Informe o Mes")
+        }
+        if(!lancamento.valor){
+            erros.push("Informe o Valor")
+        }
+        if(!lancamento.descricao){
+            erros.push("Informe o Descricao")
+        }
+        if(!lancamento.tipo){
+            erros.push("Informe o Tipo")
+        }
+
+        if(erros && erros.length > 0){
+            throw new ErroValidacao(erros);
+        }
+
+    }
 
     consultar(LancamentoFiltro){
 

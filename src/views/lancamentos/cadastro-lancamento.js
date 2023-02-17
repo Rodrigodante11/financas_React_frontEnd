@@ -28,7 +28,7 @@ class CadastroLancamento extends React.Component{
         if(params.id){ // se eu nao pasar o (id) como para entar estou entrando no formulario de cadastro para CRIAR e nao para ATUALIZAR
             this.lancamentoService.obterPorId(params.id)
                     .then(response => {
-                        console.log(response.data)
+                        // console.log(response.data)
                         this.setState({
                             ...response.data , // ... = spread operator = colocar todos propriedades // mostrar todos dados de ataualizar ao usuario 
                             atualizando:true})  
@@ -68,7 +68,17 @@ class CadastroLancamento extends React.Component{
             tipo,       // tipo:tipo
             usuario:usuarioLogado.id
         }
+        
+        try{
+            this.lancamentoService.validar(lancamento) // enviando para validar para confirmar que tdos os campos estao preenchidos
 
+        }catch(erro){
+            console.log(erro)
+            const mensagens = erro.mensagens;
+            mensagens.forEach( msg => messages.mensagemErro(msg));
+            return false;
+
+        }
         
         this.lancamentoService
             .salvar(lancamento)
