@@ -18,6 +18,10 @@ class LocalHistorageService{
         const item =  localStorage.getItem(chave); // pega o usuario logado
         return JSON.parse(item) ; // converte para json e retorna
     }
+
+    static removerItem(chave){
+        localStorage.removeItem(chave)
+    }
 }
 
 export default LocalHistorageService
