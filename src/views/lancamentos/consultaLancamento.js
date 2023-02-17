@@ -6,7 +6,7 @@ import SelectMenu from "../../components/selectMenu";
 import LancamentoTable from "./lancamentoTable";
 
 import LancamentoService from "../../app/service/lancamentoService";
-import LocalHistorageService from "../../app/service/localstorageService";
+import LocalStorageService from "../../app/service/localstorageService";
 
 
 import { Button } from 'primereact/button';
@@ -38,7 +38,7 @@ class ConsultaLancamentos extends React.Component{
             messages.mensagemErro('O campo Ano é obrigatorio.')
             return false
         }
-        const usuarioLogado = LocalHistorageService.obterItem('_usuario_logado')
+        const usuarioLogado = LocalStorageService.obterItem('_usuario_logado')
 
         const lancamentoFiltro = {
             ano: this.state.ano,

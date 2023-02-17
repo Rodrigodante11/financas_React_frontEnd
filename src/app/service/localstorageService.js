@@ -1,5 +1,5 @@
 
-class LocalHistorageService{
+class LocalStorageService{
 
     // O LocalStorage é uma forma de salvar dados no computador do cliente. 
     // Ele permite que salvemos pares de chaves e valores no web browser sem uma data de expiração.
@@ -24,4 +24,4 @@ class LocalHistorageService{
     }
 }
 
-export default LocalHistorageService
+export default LocalStorageService

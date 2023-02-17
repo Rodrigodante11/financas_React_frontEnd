@@ -5,7 +5,7 @@ import FormGroup from "../../components/form-group";
 import SelectMenu from "../../components/selectMenu";
 import LancamentoService from "../../app/service/lancamentoService";
 import * as messages from '../../components/toastr'
-import LocalHistorageService from "../../app/service/localstorageService";
+import LocalStorageService from "../../app/service/localstorageService";
 
 
 class CadastroLancamento extends React.Component{
@@ -56,7 +56,7 @@ class CadastroLancamento extends React.Component{
     submit = () => { // cadastrar nao tem ID
         // console.log(this.state)
 
-        const usuarioLogado = LocalHistorageService.obterItem('_usuario_logado')
+        const usuarioLogado = LocalStorageService.obterItem('_usuario_logado')
         
         const { descricao, valor, mes, ano, tipo} =  this.state;
 

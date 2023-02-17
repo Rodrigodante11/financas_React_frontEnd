@@ -1,6 +1,8 @@
 import React from "react";
 import UsuarioService from "../app/service/usuarioService";
-import LocalHistorageService from "../app/service/localstorageService";
+// import LocalStorageService from "../app/service/localstorageService";
+import { AuthContext } from "../main/provedorAutenticacao";
+import * as messages from '../components/toastr'
 
 class Home extends React.Component{
 
@@ -16,7 +18,8 @@ class Home extends React.Component{
 
     componentDidMount(){ //é invocado imediatamente após a montagem de um componente (inserido na árvore)
         
-        const usuarioLogado = LocalHistorageService.obterItem('_usuario_logado')
+        // const usuarioLogado = LocalStorageService.obterItem('_usuario_logado')
+        const usuarioLogado = this.context.usuarioAutenticado
 
         this.usuarioService
             .obterSaldoPorUsuario(usuarioLogado.id)
@@ -24,7 +27,7 @@ class Home extends React.Component{
                 this.setState({saldo: response.data})
               
             }).catch( error =>{
-                console.log(error.response)
+                messages.mensagemErro(error.data)
             });
     }
 
@@ -52,5 +55,7 @@ class Home extends React.Component{
         )
     }
 } 
+
+Home.contextType = AuthContext // so funciona em classes/Objeto 
 
 export default  Home
