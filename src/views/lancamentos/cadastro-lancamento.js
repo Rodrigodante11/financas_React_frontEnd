@@ -73,7 +73,7 @@ class CadastroLancamento extends React.Component{
             this.lancamentoService.validar(lancamento) // enviando para validar para confirmar que tdos os campos estao preenchidos
 
         }catch(erro){
-            console.log(erro)
+          
             const mensagens = erro.mensagens;
             mensagens.forEach( msg => messages.mensagemErro(msg));
             return false;

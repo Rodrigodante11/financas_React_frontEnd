@@ -3,7 +3,7 @@ import Card from "../components/card";
 import FormGroup from "../components/form-group";
 import { withRouter } from "react-router-dom"; 
 import UsuarioService from "../app/service/usuarioService";
-import { mensagemSucesso, mensagemErro } from "../components/toastr";
+import * as messages from '../components/toastr'
 
 class CadastroUsuario extends React.Component{
 
@@ -19,67 +19,43 @@ class CadastroUsuario extends React.Component{
         this.usuarioService = new UsuarioService();
     }
 
-    validar(){
-        const msgs = []
-
-        if(!this.state.nome){
-
-            msgs.push('O campo Nome é Obrigatorio')
-
-        }
-        if(!this.state.email){
-            msgs.push('O campo Email é Obrigatorio')
-        }
-        else if( !this.state.email.match(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]/)){
-            msgs.push(' Informe um email Valido')
-        }
-
-        if(!this.state.senha){
-            msgs.push(' Informe a senha')
-        }
-        if(!this.state.senhaRepeticao)
-        {
-            msgs.push('O campo confirmacao de senha é Obrigatorio')
-        }
-        if(this.state.senha !== this.state.senhaRepeticao){
-            msgs.push('As senha nao combinam!')
-        }
-
-
-        return msgs;
-    }
-
     cancelar = () => {
        
         this.props.history.push('/login')
     }
 
     cadastrar = () => {
-        const msgs =  this.validar();
 
-        if(msgs && msgs.length >0){
-            
-            msgs.forEach( (msg, index) => {
-                mensagemErro(msg)
-            });
+        // const usuario = {
+        //     email: this.state.email,
+        //     nome:  this.state.nome,
+        //     senha: this.state.senha,
+        //     senhaRepeticao: this.state.senhaRepeticao
+        // }
+
+        const { nome, email, senha, senhaRepeticao } = this.state // igual ao de cima comentado
+
+        const usuario = { nome, email, senha, senhaRepeticao }
+
+        try{
+
+            this.usuarioService.validar(usuario)
+
+        }catch(erro){
+
+            const mensagens = erro.mensagens;
+            mensagens.forEach( msg => messages.mensagemErro(msg));
             return false;
+
         }
-
-
-        const usuario = {
-            email: this.state.email,
-            nome:  this.state.nome,
-            senha: this.state.senha
-        }
-
 
         this.usuarioService.salvar(usuario)
             .then( response => {
-                mensagemSucesso( "Usuario cadastrado com sucesso! Faca login para acesssar o sistema. ")
+                messages.mensagemSucesso( "Usuario cadastrado com sucesso! Faca login para acesssar o sistema. ")
                 this.props.history.push('/login')
             }).catch(error => {
 
-                mensagemErro(error.response.data)
+                messages.mensagemErro(error.response.data)
 
             })
     }
