@@ -61,7 +61,8 @@ class ConsultaLancamentos extends React.Component{
     }
 
     editar = (id) =>{
-        console.log("Editar: " +id)
+        this.props.history.push(`/cadastro-lancamento/${id}`)
+        
     }
 
     abrirConfirmacaoDeletar = (lancamento) =>{
@@ -93,6 +94,10 @@ class ConsultaLancamentos extends React.Component{
                 messages.mensagemErro(' Erro ao tentar deletar o Lancamento, Relate ao desenvolvedor')
             })
         
+    }
+
+    preparaFormularioCadastro =() => {
+        this.props.history.push('/cadastro-lancamento')
     }
     
     render(){
@@ -152,7 +157,7 @@ class ConsultaLancamentos extends React.Component{
 
                             <div className="card-body d-flex justify-content-center">
                                 <button type="button" onClick={this.buscar} className="btn btn-primary btn-lg me-2">Buscar</button>
-                                <button type="button" className="btn btn-danger btn-lg me-2">Excluir</button>
+                                <button onClick={this.preparaFormularioCadastro} type="button" className="btn btn-danger btn-lg me-2">Cadastrar</button>
                             </div>
                         
                         </div>

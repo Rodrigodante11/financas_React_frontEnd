@@ -44,7 +44,7 @@ class Home extends React.Component{
                         className="fa fa-users"></i>  Cadastrar Usuário</a>
 
                     <a className="btn btn-danger btn-lg" 
-                        href="https://bootswatch.com/flatly/#" 
+                        href="#/cadastro-lancamento" 
                         role="button"><i 
                         className="fa fa-users"></i>  Cadastrar Lançamento</a>
                 </p>
