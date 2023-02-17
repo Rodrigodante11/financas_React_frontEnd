@@ -14,17 +14,33 @@ export default props =>{
                 
                 {/* botoes de editar e deletar cobsulta */}
                 <td>
-                    <button type="button" 
-                            className="btn btn-primary"
-                            onClick={ e=> props.editAction(lancamento.id)}>
-                                Editar
+
+                    <button  className="btn btn-success" title="Efetivar"
+                            onClick={e => props.alterarStatus( lancamento, 'EFETIVADO')}
+                            disabled={ lancamento.status !== 'PENDENTE'}
+                            type="button">
+                            <i className="pi pi-check" ></i>
                     </button>
 
-                    <button type="button" 
+                    <button  className="btn btn-warning" title="cancelar"
+                            onClick={e => props.alterarStatus( lancamento, 'CANCELADO')}
+                            disabled={ lancamento.status !== 'PENDENTE'}
+                            type="button">
+                            <i className="pi pi-times"></i>
+                    </button>
+
+                    <button type="button"  title="Editar"
+                            className="btn btn-primary"
+                            onClick={ e=> props.editAction(lancamento.id)}>
+                            <i className="pi pi-pencil" ></i>
+                    </button>
+ 
+                    <button type="button" title="Excluir"
                             className="btn btn-danger" 
                             onClick={e=> props.deleteAction(lancamento)}>
-                                Deletar
+                            <i className="pi pi-trash" ></i>
                     </button>
+
                 </td>
             </tr>
         )

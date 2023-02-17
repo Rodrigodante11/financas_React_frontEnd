@@ -88,8 +88,19 @@ class Login extends React.Component{
                                                 placeholder="Password"/>
                                         </FormGroup>
                                         <div className="card-body d-flex justify-content-center">
-                                            <button onClick={ this.entrar } className="btn btn-success btn-lg me-2">   Entrar</button>
-                                            <button type="button" onClick={ this.prepareCadastrar } className="btn btn-danger btn-lg">Cadastrar</button>
+
+                                            <button onClick={ this.entrar } 
+                                                    className="btn btn-success btn-lg me-2">
+                                                        <i className="pi pi-sign-in"></i>
+                                                        Entrar
+                                            </button>
+
+                                            <button type="button" onClick={ this.prepareCadastrar } 
+                                                    className="btn btn-danger btn-lg">
+                                                        <i className="pi pi-plus"></i>
+                                                        Cadastrar
+                                            </button>
+
                                         </div>
                                         
                                     </fieldset>

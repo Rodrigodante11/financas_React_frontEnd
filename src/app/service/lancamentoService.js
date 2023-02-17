@@ -94,6 +94,13 @@ export default class LancamentoService extends ApiService{
         return this.put(`/${lancamento.id}`, lancamento)
     }
 
+    alterarStatus(id, status){
+
+        // const lancamentoDTO = { status : status } // apenas a propriedade que sera mudada
+        return this.put(`/${id}/atualiza-status`, {status})
+
+    }
+
     deletar(id){
         return this.delete(`/${id}`)
     }

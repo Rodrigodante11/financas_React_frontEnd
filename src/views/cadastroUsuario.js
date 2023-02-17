@@ -116,8 +116,17 @@ class CadastroUsuario extends React.Component{
                                 </FormGroup>
 
                                 <div className="card-body d-flex justify-content-center">
-                                    <button onClick={ this.cadastrar } className="btn btn-success btn-lg me-2">Salvar</button>
-                                    <button type="button" onClick={ this.cancelar } className="btn btn-danger btn-lg">Cancelar</button>
+                                    
+                                    <button onClick={ this.cadastrar } 
+                                            className="btn btn-success btn-lg me-2">
+                                                <i className="pi pi-save"></i>Salvar
+                                    </button>
+
+                                    <button type="button" onClick={ this.cancelar } 
+                                            className="btn btn-danger btn-lg">
+                                                <i className="pi pi-times"></i>Cancelar
+                                    </button>
+
                                 </div>
 
                             </fieldset>

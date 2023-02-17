@@ -212,15 +212,27 @@ class CadastroLancamento extends React.Component{
 
                         {this.state.atualizando ?  // condicao ternaria para ver se a tela vai para atualizar ou cadastrar lancamento
                             (
-                                <button onClick={this.atualizar} type="button" className="btn btn-primary btn-lg me-4">Atualizar</button>   
+
+                                <button onClick={this.atualizar} type="button" 
+                                        className="btn btn-primary btn-lg me-4">
+                                        <i className="pi pi-refresh"></i> Atualizar
+                                </button>   
+
                             ) : (
-                                <button onClick={this.submit} type="button" className="btn btn-success btn-lg me-4">Salvar</button>
+
+                                <button onClick={this.submit} type="button" 
+                                        className="btn btn-success btn-lg me-4">
+                                        <i className="pi pi-save"></i> Salvar
+                                </button>
+
                             )
 
                         }
                         
                         <button onClick={ e => this.props.history.push('/consulta-lancamento')}
-                            type="button" className="btn btn-danger btn-lg me-2">Cancelar</button>
+                            type="button" className="btn btn-danger btn-lg me-2">
+                                <i className="pi pi-times"></i> Cancelar
+                            </button>
 
                     </div>
 
