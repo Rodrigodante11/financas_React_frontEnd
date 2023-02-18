@@ -2,6 +2,8 @@ import React from "react";
 import NavBarItem from "./navBarItem";
 // import AuthService from "../app/service/authService";
 import { AuthConsumer } from "../main/provedorAutenticacao";
+import LocalStorageService from "../app/service/localstorageService";
+
 
 // const deslogar = () =>{
 //     AuthService.removerUsuarioLogado();
@@ -10,8 +12,14 @@ import { AuthConsumer } from "../main/provedorAutenticacao";
 // const isUsuarioAutenticado = () =>{
 //     return AuthService.isUsuarioAutenticado();
 // }
+const usuarioNome = () =>{
+    const teste  = LocalStorageService.obterItem('_usuario_logado')
+    console.log(teste.nome)
+    return teste.nome
+}
 
 function NavBar(props){
+                    
     return (
         <div className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary" >
             <div className="container">
@@ -26,7 +34,7 @@ function NavBar(props){
                         <NavBarItem render={props.isUsuarioAutenticado} href="#/home" label="Home"/>
                         <NavBarItem render={props.isUsuarioAutenticado} href="#/cadastro-usuarios" label="Usuários"/>
                         <NavBarItem render={props.isUsuarioAutenticado} href="#/consulta-lancamento" label="Lançamentos"/>
-                        <NavBarItem render={props.isUsuarioAutenticado} href="#/login" label="Sair"  onClick={props.deslogar} />
+                        <NavBarItem render={props.isUsuarioAutenticado} href="#/login" label={props.isUsuarioAutenticado ? `Bem vindo, ${usuarioNome()}` :  "Logar"}  onClick={props.deslogar} />
 
                     </ul>
                 </div>
